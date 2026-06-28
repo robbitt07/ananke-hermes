@@ -9,8 +9,8 @@ from collections.abc import Callable
 
 from confluent_kafka import Consumer, KafkaError, KafkaException, TopicPartition
 
-from ananke_hermes.producer import EventProducer
-from ananke_hermes.settings import KafkaSettings
+from ananke_hermes.streaming.producer import EventProducer
+from ananke_hermes.streaming.settings import KafkaSettings
 
 logger = logging.getLogger(__name__)
 

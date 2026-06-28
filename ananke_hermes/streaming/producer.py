@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 
 from confluent_kafka import Producer
 
-from ananke_hermes.settings import KafkaSettings
+from ananke_hermes.streaming.settings import KafkaSettings
 
 logger = logging.getLogger(__name__)
 

@@ -1,7 +1,18 @@
 # ananke-hermes
 
-Hermes Redpanda/Kafka streaming SDK for producers and consumers in the Ananke
-Trading platform.
+Hermes SDK for the Ananke Trading platform: Redpanda/Kafka streaming helpers
+and shared domain models for pricing data.
+
+## Package structure
+
+```
+ananke_hermes/
+├── streaming/   # Kafka producer, consumer, settings, message envelopes
+└── models/      # Pydantic domain models (e.g. HermesBar)
+```
+
+Root imports remain supported for backward compatibility; prefer explicit
+subpackage imports in new code.
 
 ## Install
 
@@ -20,8 +31,10 @@ pip install -e ".[test]"
 
 ## Usage
 
+### Streaming
+
 ```python
-from ananke_hermes import (
+from ananke_hermes.streaming import (
     EventConsumer,
     EventProducer,
     KafkaSettings,
@@ -30,6 +43,33 @@ from ananke_hermes import (
     pricing_batch_key,
 )
 ```
+
+### Models
+
+```python
+from ananke_hermes.models import HermesBar
+# or
+from ananke_hermes import HermesBar
+```
+
+#### HermesBar fields
+
+| Field | Type | Required | Notes |
+|-------|------|----------|-------|
+| `integration` | `str` | yes | Data source integration name |
+| `ticker` | `str` | yes | Instrument ticker |
+| `security_type` | `str` | yes | e.g. `crypto`, `equity` |
+| `bar_type` | `str` | yes | e.g. `trade` |
+| `data_feed` | `str` | yes | e.g. `stream_bar` |
+| `dt` | `datetime` | yes | Bar timestamp (naive values coerced to UTC) |
+| `open` | `float` | yes | |
+| `high` | `float` | yes | |
+| `low` | `float` | yes | |
+| `close` | `float` | yes | |
+| `volume` | `float \| None` | no | |
+| `bid_ask_spread` | `float \| None` | no | |
+| `open_int` | `float \| None` | no | Open interest |
+| `updated_on` | `datetime` | no | Defaults to UTC now |
 
 ## Configuration
 

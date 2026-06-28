@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from ananke_hermes.settings import KafkaSettings
+from ananke_hermes.streaming.settings import KafkaSettings
 
 
 def test_kafka_settings_requires_username_and_password(
