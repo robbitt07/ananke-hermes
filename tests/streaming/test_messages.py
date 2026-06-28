@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from ananke_hermes.messages import build_pricing_batch, pricing_batch_key
+from ananke_hermes.streaming.messages import build_pricing_batch, pricing_batch_key
 
 
 def test_build_pricing_batch() -> None:

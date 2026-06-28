@@ -1,11 +1,19 @@
-from ananke_hermes.consumer import EventConsumer
-from ananke_hermes.messages import build_pricing_batch, pricing_batch_key
-from ananke_hermes.producer import EventProducer
-from ananke_hermes.settings import KafkaSettings, get_settings
+from ananke_hermes.models import HermesBar
+from ananke_hermes.streaming import (
+    EventConsumer,
+    EventProducer,
+    KafkaSettings,
+    build_pricing_batch,
+    get_settings,
+    pricing_batch_key,
+)
+
+__version__ = "0.1.1"
 
 __all__ = [
     "EventConsumer",
     "EventProducer",
+    "HermesBar",
     "KafkaSettings",
     "build_pricing_batch",
     "get_settings",
